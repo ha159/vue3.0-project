@@ -13,26 +13,25 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, computed } from 'vue'
-
-export interface ColumnProps {
-  id: number;
-  title: string;
-  avatar?: string;
-  description: string;
+import { defineComponent, PropType, computed } from 'vue'
+export interface ColumnProps {
+  id: number;
+  title: string;
+  avatar?: string;
+  description: string;
 }
-export default defineComponent({
-  name: 'ColumnList',
-  props: {
-    list: {
-      type: Array as PropType<ColumnProps[]>,
-      require: true
-    }
-  },
-  setup(props) {
+export default defineComponent({
+  name: 'ColumnList',
+  props: {
+    list: {
+      type: Array as PropType<ColumnProps[]>,
+      require: true
+    }
+  },
+  setup (props) {
     const columnList = computed(() => {
-      return props.list&&props.list.map(column => {
-        if(!column.avatar) {
+      return props.list && props.list.map(column => {
+        if (!column.avatar) {
           column.avatar = require('@/assets/column.jpg')
         }
         return column

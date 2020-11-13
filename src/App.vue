@@ -1,13 +1,14 @@
 <template>
   <div class="container">
+    <global-header :user='userData'></global-header>
     <column-list :list='list'></column-list>
   </div>
-  
 </template>
 <script lang="ts">
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { defineComponent } from 'vue'
 import ColumnList, { ColumnProps } from './components/ColumnList.vue'
+import GlobalHeader, { UserProps } from '@/components/GlobalHeader.vue'
 const testData: ColumnProps[] = [
   {
     id: 1,
@@ -30,18 +31,23 @@ const testData: ColumnProps[] = [
   {
     id: 2,
     title: 'test2的专栏',
-    description: '这是的test2专栏，有一段非常有意思的简介，可以更新一下欧',
-    
+    description: '这是的test2专栏，有一段非常有意思的简介，可以更新一下欧'
   }
 ]
+const currentUser = {
+  isLogin: true,
+  name: 'xiaoming'
+}
 export default defineComponent({
   name: 'App',
   components: {
-    ColumnList
+    ColumnList,
+    GlobalHeader
   },
-  setup() {
+  setup () {
     return {
-      list: testData
+      list: testData,
+      userData: currentUser
     }
   }
 })
